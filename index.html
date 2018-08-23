@@ -81,6 +81,18 @@
 		<p>{{ answer }}</p>
 	</div>
 
+	<div id="app9" class="static"
+		v-bind:class="{ active:isActive, 'text-danger': hasError}">
+		<p>panbin</p>
+	</div>
+	
+	<my-component class="baz boo"></my-component>
+	
+	<div v-bind:style="styleObject" id='app10'
+	>{{ bind }}</div>
+
+
+
 	<script type="text/javascript">
 	var app = new Vue({
 		el:'#app',
@@ -262,6 +274,30 @@
     					vm.answer = 'Error! Could not reach the API' + error
     				})
     		}
+    	}
+    })
+
+    //v-bind:class class与Style绑定
+    var app9 = new Vue({
+    	el:'#app9',
+    	data:{
+    		isActive:true,
+    		hasError:false
+    	}
+    })
+
+    Vue.component('my-component',{
+    	template:'<p class="foo bar">Hi</p>'
+    })
+
+    var app10 = new Vue({
+    	el:'#app10',
+    	data:{
+    		bind:'vue',
+    		styleObject: {
+		    color: 'red',
+		    fontSize: '13px'
+		  }
     	}
     })
 
